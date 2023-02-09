@@ -2,7 +2,18 @@ package com.techelevator;
 
 public class Sour extends Candy{
 
-    public Sour(String id, String name, boolean iswrapped, int qty, double price) {
-        super(id, name, iswrapped, qty, price);
+    public Sour(String id, String name, boolean iswrapped, double price) {
+        super(id, name, iswrapped, price);
+    }
+
+
+
+
+
+
+
+
+    public String toString() {
+        return null;
     }
 }

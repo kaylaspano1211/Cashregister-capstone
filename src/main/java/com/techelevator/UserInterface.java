@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -24,5 +25,23 @@ public class UserInterface {
 
         return Integer.parseInt(choice);
     }
+
+    public void printMessage(String message) {
+        System.out.println(message);
+    }
+
+    public void printCandy(List<Candy> foundCandy){
+        System.out.println("*****INVENTORY*****");
+
+        for(Candy candy : foundCandy){
+            printCandy(candy);
+        }
+    }
+    public void printCandy (Candy candy) {
+        System.out.println(candy.toString());
+    }
+
+
+
 
 }

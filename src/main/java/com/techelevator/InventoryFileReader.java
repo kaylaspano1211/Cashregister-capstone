@@ -18,8 +18,6 @@ public class InventoryFileReader {
     public Map<String, Candy> readFile() {
 
 
-        Map<String, Candy> candy = new TreeMap<>();
-
         File path = new File(filename);
         Scanner scanner = null;
         try {
@@ -28,6 +26,9 @@ public class InventoryFileReader {
             e.printStackTrace();
         }
 
+        Map<String, Candy> candy = new TreeMap<>();
+
+
         while(scanner.hasNextLine()) {
 
             String record = scanner.nextLine();
@@ -35,9 +36,14 @@ public class InventoryFileReader {
             String [] fields = record.split("|");
 
             if(fields[0].equals("CH")) {
+                Chocolate candies = new Chocolate(fields[1], fields[2], Boolean.parseBoolean(fields[3]), Double.parseDouble(fields[4]));
+
+                candy.put(fields[1], candies);
+
 
 
             }
+
 
 
 
