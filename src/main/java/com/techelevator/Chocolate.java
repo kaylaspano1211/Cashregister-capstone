@@ -6,5 +6,5 @@ public class Chocolate extends Candy{
         super(id, name, iswrapped, qty, price);
     }
 
-    
+
 }
