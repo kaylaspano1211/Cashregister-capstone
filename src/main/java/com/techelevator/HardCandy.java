@@ -2,11 +2,14 @@ package com.techelevator;
 
 public class HardCandy extends Candy{
 
-    public HardCandy(String id, String name, boolean iswrapped, int qty, double price) {
-        super(id, name, iswrapped, qty, price);
+    public HardCandy(String id, String name, double price, boolean iswrapped) {
+        super(id, name,price, iswrapped);
     }
 
 
+    public String toString() {
+        return null;
+    }
 
 
 }

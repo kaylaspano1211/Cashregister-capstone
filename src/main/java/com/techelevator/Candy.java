@@ -1,18 +1,17 @@
 package com.techelevator;
 
-public class Candy {
+public abstract class Candy {
 
     private String id;
     private String name;
-    private boolean iswrapped;
-    private int qty;
+    private boolean isWrapped;
+    private int qty = 100;
     private double price;
 
-    public Candy(String id, String name, boolean iswrapped, int qty, double price){
+    public Candy(String id, String name, double price, boolean isWrapped){
         this.id = id;
         this.name = name;
-        this.iswrapped = iswrapped;
-        this.qty = qty;
+        this.isWrapped = isWrapped;
         this.price = price;
     }
 
@@ -32,12 +31,16 @@ public class Candy {
         this.name = name;
     }
 
-    public boolean isIswrapped() {
-        return iswrapped;
+    public boolean isWrapped() {
+//        if(!isWrapped) {
+//            return true;
+//        } else if (isWrapped){
+//        } return false;
+        return true;
     }
 
-    public void setIswrapped(boolean iswrapped) {
-        this.iswrapped = iswrapped;
+    public void setWrapped(boolean wrapped) {
+        this.isWrapped = wrapped;
     }
 
 
@@ -56,4 +59,16 @@ public class Candy {
     public void setPrice(double price) {
         this.price = price;
     }
+
+
+
+
+
+
+    public abstract String toString();
+
+
+
+
+
 }

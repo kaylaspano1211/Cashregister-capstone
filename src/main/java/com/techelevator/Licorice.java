@@ -2,7 +2,17 @@ package com.techelevator;
 
 public class Licorice extends Candy{
 
-    public Licorice(String id, String name, boolean iswrapped, int qty, double price) {
-        super(id, name, iswrapped, qty, price);
+    public Licorice(String id, String name, double price, boolean iswrapped) {
+        super(id, name,price, iswrapped);
+    }
+
+
+
+
+
+
+
+    public String toString() {
+        return null;
     }
 }

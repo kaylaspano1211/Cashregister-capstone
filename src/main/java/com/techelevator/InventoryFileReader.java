@@ -15,10 +15,9 @@ public class InventoryFileReader {
     // Hmmm.... looks like a great place to create some form or method called readFile....
     private String filename = "inventory.csv";
 
-    public Map<String, Candy> readFile() {
+    public TreeMap<String, Candy> readFile() {
 
-
-        Map<String, Candy> candy = new TreeMap<>();
+        TreeMap<String, Candy> candy = new TreeMap<>();
 
         File path = new File(filename);
         Scanner scanner = null;
@@ -28,36 +27,26 @@ public class InventoryFileReader {
             e.printStackTrace();
         }
 
-        while(scanner.hasNextLine()) {
+
+        while (scanner.hasNextLine()) {
 
             String record = scanner.nextLine();
 
-            String [] fields = record.split("|");
+            String[] fields = record.split("\\|");
 
-            if(fields[0].equals("CH")) {
-
-
-            }
-
-
-
-
-
-
+            if (fields[0].equals("CH")) {
+                    Chocolate candies = new Chocolate(fields[1], fields[2], Double.parseDouble(fields[3]), Boolean.parseBoolean(fields[4]));
+                    candy.put(fields[1], candies);
+                } else if (fields[0].equals("SR")) {
+                    if (fields[4].equals("T") || fields[4].equals("F")) {
+                        Sour candies = new Sour(fields[1], fields[2], Double.parseDouble(fields[3]), Boolean.parseBoolean(fields[4]));
+                        candy.put(fields[1], candies);
+                    }
 
 
+                }
 
-
-
-
-
-
-
-
+            } return candy;
         }
-
-
-        return candy;
     }
 
-}
