@@ -7,9 +7,5 @@ public class HardCandy extends Candy{
     }
 
 
-    public String toString() {
-        return this.getId() + " " + this.getName() + " " + convert_boolean_to_string() + " " + this.getQty() + " " + this.getPrice();
-    }
-
 
 }
