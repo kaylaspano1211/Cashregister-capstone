@@ -85,7 +85,7 @@ public class UserInterface {
         System.out.println("2. Select Products");
         System.out.println("3. Complete Sale");
 
-        System.out.println("Current Customer Balance: " + cashBox.getBalance());
+        System.out.println("Current Customer Balance: $" + cashBox.getBalance());
 
         String subMenuChoice = scanner.nextLine();
 
