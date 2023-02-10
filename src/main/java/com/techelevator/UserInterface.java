@@ -33,7 +33,7 @@ public class UserInterface {
     public void printCandy(List<Candy> foundCandy) {
         System.out.println("*****INVENTORY*****");
 
-        System.out.println("ID" + "\t\tName" + "\tWrapper " + "\tQTY " + "\tPrice");
+        System.out.println("ID" + "\t\t\tName" + "\t\t\tWrapper " + "\t\tQTY " + "\tPrice");
 
         for (Candy candy : foundCandy) {
             printCandy(candy);
