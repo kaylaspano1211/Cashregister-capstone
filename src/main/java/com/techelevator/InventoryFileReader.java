@@ -34,19 +34,36 @@ public class InventoryFileReader {
 
             String[] fields = record.split("\\|");
 
+            boolean isWrapped;
+            if (fields[4].equalsIgnoreCase("T")) {
+                isWrapped = true;
+            } else {
+                isWrapped = false;
+            }
+
+
+
             if (fields[0].equals("CH")) {
-                    Chocolate candies = new Chocolate(fields[1], fields[2], Double.parseDouble(fields[3]), Boolean.parseBoolean(fields[4]));
-                    candy.put(fields[1], candies);
-                } else if (fields[0].equals("SR")) {
-                    if (fields[4].equals("T") || fields[4].equals("F")) {
-                        Sour candies = new Sour(fields[1], fields[2], Double.parseDouble(fields[3]), Boolean.parseBoolean(fields[4]));
-                        candy.put(fields[1], candies);
-                    }
+                Chocolate candies = new Chocolate(fields[1], fields[2], Double.parseDouble(fields[3]), isWrapped);
+                candy.put(fields[1], candies);
+
+            } else if (fields[0].equals("SR")) {
+                Sour candies = new Sour(fields[1], fields[2], Double.parseDouble(fields[3]), isWrapped);
+                candy.put(fields[1], candies);
+
+            } else if (fields[0].equals("HC")) {
+                HardCandy candies = new HardCandy(fields[1], fields[2], Double.parseDouble(fields[3]), isWrapped);
+                candy.put(fields[1], candies);
+
+            } else if (fields[0].equals("LI")) {
+                Licorice candies = new Licorice(fields[1], fields[2], Double.parseDouble(fields[3]), isWrapped);
+                candy.put(fields[1], candies);
+
+            }
 
 
-                }
-
-            } return candy;
         }
+        return candy;
     }
+}
 

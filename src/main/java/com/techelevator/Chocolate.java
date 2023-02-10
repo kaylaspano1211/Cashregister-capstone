@@ -7,7 +7,9 @@ public class Chocolate extends Candy{
     }
 
     public String toString(){
-        return this.getId() + " " + this.getName() + " " + this.isWrapped() + " " + this.getQty() + " " + this.getPrice();
+
+
+        return this.getId() + " " + this.getName() + " " + convert_boolean_to_string() + " " + this.getQty() + " " + this.getPrice();
     }
 
 

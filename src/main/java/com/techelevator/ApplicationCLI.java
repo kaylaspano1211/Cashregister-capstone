@@ -50,7 +50,10 @@ public class ApplicationCLI {
 			if (choice == SHOW_INVENTORY){
 
 				List<Candy> candyList = candyInventory.retrieveCandyList();
+
+
 				userInterface.printCandy(candyList);
+
 
 			}
 

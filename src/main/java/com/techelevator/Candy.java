@@ -32,11 +32,7 @@ public abstract class Candy {
     }
 
     public boolean isWrapped() {
-//        if(!isWrapped) {
-//            return true;
-//        } else if (isWrapped){
-//        } return false;
-        return true;
+        return isWrapped;
     }
 
     public void setWrapped(boolean wrapped) {
@@ -66,6 +62,18 @@ public abstract class Candy {
 
 
     public abstract String toString();
+
+    public String convert_boolean_to_string() {
+        String wrappers;
+        if(this.isWrapped){
+            wrappers = "Y";
+        } else {
+            wrappers = "N";
+        }
+        return wrappers;
+    }
+
+
 
 
 

@@ -13,6 +13,6 @@ public class Licorice extends Candy{
 
 
     public String toString() {
-        return null;
+        return this.getId() + " " + this.getName() + " " + convert_boolean_to_string() + " " + this.getQty() + " " + this.getPrice();
     }
 }
