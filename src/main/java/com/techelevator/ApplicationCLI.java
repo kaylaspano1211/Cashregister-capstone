@@ -12,6 +12,9 @@ public class ApplicationCLI {
 	private final int SHOW_INVENTORY = 1;
 	private final int MAKE_SALE = 2;
 	private final int QUIT = 3;
+	final int TAKE_MONEY = 1;
+	final int SELECT_PRODUCTS = 2;
+	final int COMPLETE_SALE = 3;
 
 
 	// probably should leave this method alone... and go do stuff in the run method....
@@ -27,6 +30,8 @@ public class ApplicationCLI {
 
 		Inventory candyInventory = new Inventory();
 		UserInterface userInterface = new UserInterface();
+		CashBox cashBox = new CashBox();
+
 
 		// Good place to create references for UserInterface, Inventory class, and Register class.... (There should NEVER be more than one instance of these)
 
@@ -55,6 +60,32 @@ public class ApplicationCLI {
 				userInterface.printCandy(candyList);
 
 
+			}
+
+			if (choice == MAKE_SALE){
+
+				while(true){
+					int subMenuChoice;
+
+					try {
+						subMenuChoice = userInterface.PrintSubMenu(cashBox); // method that prints subMenu
+					}
+					catch (Exception e) {
+						userInterface.printMessage("Invalid Choice!");
+						continue;
+					}
+					if(subMenuChoice == 1){
+						// ask user for amount of Money
+						userInterface.printMessage("Please Enter Amount: ");
+
+
+						//Call CashBox method addMoney
+						cashBox.addMoney(subMenuChoice);
+
+
+						//return
+					}
+				}
 			}
 
 

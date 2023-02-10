@@ -33,7 +33,7 @@ public class UserInterface {
     public void printCandy(List<Candy> foundCandy){
         System.out.println("*****INVENTORY*****");
 
-        System.out.println("ID " + "Name " + "Wrapper " + "QTY " + "Price");
+        System.out.println("ID" + "\t\tName" + "\tWrapper " + "\tQTY " + "\tPrice");
 
         for(Candy candy : foundCandy){
             printCandy(candy);
@@ -43,7 +43,27 @@ public class UserInterface {
         System.out.println(candy.toString());
     }
 
+    public int MoneyAdded(CashBox cashBox){
+        return 0;
+    }
+
+    public int PrintSubMenu(CashBox cashBox){
+
+        System.out.println("1. Take Money");
+        System.out.println("2. Select Products");
+        System.out.println("3. Complete Sale");
+        String subMenuChoice = scanner.nextLine();
+        System.out.println("Current Customer Balance: " + cashBox.getBalance());
+
+
+      return Integer.parseInt(subMenuChoice);
+    }
+    }
 
 
 
-}
+
+
+
+
+

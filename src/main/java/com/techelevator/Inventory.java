@@ -34,6 +34,20 @@ public class Inventory {
         return  candyList;
     }
 
+    public String availabilityOfItems(int qty){
+//        Candy soldOut;
+//
+//        for(Candy candy :
+//
+//        if(candy.get() == 0) {
+//            soldOut.setQty();
+//        } else {
+//
+//            }
+//        }
+        return null;
+    }
+
 
 
 

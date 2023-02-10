@@ -57,18 +57,10 @@ public abstract class Candy {
     }
 
 
-
-
-
-
     public String toString(){
 
-        return String.format("%1$7s %2$-20s %3$7s", this.getId(), this.getName(), convert_boolean_to_string());
-        // + " " + this.getQty() + " " + this.getPrice());
+        return String.format("%1$-10s %2$-20s %3$-10s %4$-10s %5$-10s ", this.getId(), this.getName(), convert_boolean_to_string(),this.getQty(), this.getPrice());
     }
-
-
-
 
     public String convert_boolean_to_string() {
         String wrappers;
