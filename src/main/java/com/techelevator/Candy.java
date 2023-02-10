@@ -5,13 +5,14 @@ public abstract class Candy {
     private String id;
     private String name;
     private boolean isWrapped;
-    private int qty = 100;
+    private int qty;
     private double price;
 
-    public Candy(String id, String name, double price, boolean isWrapped){
+    public Candy(String id, String name, double price, int qty, boolean isWrapped){
         this.id = id;
         this.name = name;
         this.isWrapped = isWrapped;
+        this.qty = qty;
         this.price = price;
     }
 
@@ -39,7 +40,6 @@ public abstract class Candy {
         this.isWrapped = wrapped;
     }
 
-
     public int getQty() {
         return qty;
     }
@@ -57,20 +57,6 @@ public abstract class Candy {
     }
 
 
-    public String toString(){
-
-        return String.format("%1$-10s %2$-20s %3$-10s %4$-10s %5$-10s ", this.getId(), this.getName(), convert_boolean_to_string(),this.getQty(), this.getPrice());
-    }
-
-    public String convert_boolean_to_string() {
-        String wrappers;
-        if(this.isWrapped){
-            wrappers = "Y";
-        } else {
-            wrappers = "N";
-        }
-        return wrappers;
-    }
 
 
 

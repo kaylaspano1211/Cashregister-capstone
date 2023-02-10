@@ -74,17 +74,40 @@ public class ApplicationCLI {
 						userInterface.printMessage("Invalid Choice!");
 						continue;
 					}
-					if(subMenuChoice == 1){
+					if(subMenuChoice == TAKE_MONEY){
+
 						// ask user for amount of Money
 						userInterface.printMessage("Please Enter Amount: ");
 
+						try {
 
-						//Call CashBox method addMoney
-						cashBox.addMoney(subMenuChoice);
-
-
-						//return
+							userInterface.MoneyAdded(cashBox);
+						} catch (NumberFormatException e) {
+							userInterface.printMessage("****Invalid amount entered, please select another choice and try again****");
+							continue;
+						}
 					}
+
+					if (subMenuChoice == SELECT_PRODUCTS){
+
+						List<Candy> candyList = candyInventory.retrieveCandyList();
+						userInterface.printCandy(candyList);
+
+						String candyId = userInterface.askUserForCandyId();
+
+						Candy foundCandy = null;
+
+						try {
+							foundCandy = candyInventory.retrieveCandyId(candyId);
+
+						} catch (CandyNotFoundException e) {
+							userInterface.printMessage("Candy " + e.getCandyId() + " does not exist. Please try again.");
+						}
+
+
+					}
+
+
 				}
 			}
 

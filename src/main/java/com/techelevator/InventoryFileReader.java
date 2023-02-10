@@ -44,19 +44,19 @@ public class InventoryFileReader {
 
 
             if (fields[0].equals("CH")) {
-                Chocolate candies = new Chocolate(fields[1], fields[2], Double.parseDouble(fields[3]), isWrapped);
+                Chocolate candies = new Chocolate(fields[1], fields[2], Double.parseDouble(fields[3]), 100, isWrapped);
                 candy.put(fields[1], candies);
 
             } else if (fields[0].equals("SR")) {
-                Sour candies = new Sour(fields[1], fields[2], Double.parseDouble(fields[3]), isWrapped);
+                Sour candies = new Sour(fields[1], fields[2], Double.parseDouble(fields[3]), 100, isWrapped);
                 candy.put(fields[1], candies);
 
             } else if (fields[0].equals("HC")) {
-                HardCandy candies = new HardCandy(fields[1], fields[2], Double.parseDouble(fields[3]), isWrapped);
+                HardCandy candies = new HardCandy(fields[1], fields[2], Double.parseDouble(fields[3]), 100, isWrapped);
                 candy.put(fields[1], candies);
 
             } else if (fields[0].equals("LI")) {
-                Licorice candies = new Licorice(fields[1], fields[2], Double.parseDouble(fields[3]), isWrapped);
+                Licorice candies = new Licorice(fields[1], fields[2], Double.parseDouble(fields[3]), 100, isWrapped);
                 candy.put(fields[1], candies);
 
             }

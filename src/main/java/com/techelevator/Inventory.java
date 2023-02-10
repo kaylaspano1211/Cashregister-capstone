@@ -25,30 +25,29 @@ public class Inventory {
 
     }
 
-    public List<Candy> retrieveCandyList(){
+    public List<Candy> retrieveCandyList() {
 
         List<Candy> candyList = new ArrayList<>();
-         for (Map.Entry<String, Candy> entry : candy.entrySet()){
-             candyList.add(entry.getValue());
-         }
-        return  candyList;
-    }
-
-    public String availabilityOfItems(int qty){
-//        Candy soldOut;
-//
-//        for(Candy candy :
-//
-//        if(candy.get() == 0) {
-//            soldOut.setQty();
-//        } else {
-//
-//            }
-//        }
-        return null;
+        for (Map.Entry<String, Candy> entry : candy.entrySet()) {
+            candyList.add(entry.getValue());
+        }
+        return candyList;
     }
 
 
+
+    public Candy retrieveCandyId(String candyId) throws CandyNotFoundException {
+
+        if (candy.get(candyId) == null) {
+            CandyNotFoundException candyE = new CandyNotFoundException();
+            candyE.setCandyId(candyId);
+            throw candyE;
+
+        } else {
+            return candy.get(candyId);
+        }
+
+    }
 
 
 }
