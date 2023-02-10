@@ -6,7 +6,7 @@ public class CashBox {
 
     public int addMoney(int money) {
 
-        if (balance < 1000) {
+        if (balance + money < 1000) {
             return (int)(balance = balance + money);
 
         } else if (balance >= 1000) {
