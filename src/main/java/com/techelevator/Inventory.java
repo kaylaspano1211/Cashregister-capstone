@@ -34,6 +34,19 @@ public class Inventory {
         return candyList;
     }
 
+    public void updatedCandyInventory(Candy candyToBuy, int Inputqty, double balance){
+        if (Inputqty <= candyToBuy.getQty() && balance > candyToBuy.getPrice()*Inputqty){
+            String Id = candyToBuy.getId();
+            Candy inventoryCandy = candy.get(Id);
+            int newQty = inventoryCandy.getQty() - Inputqty;
+            inventoryCandy.setQty(newQty);
+        }
+    }
+
+
+
+
+
 
 
     public Candy retrieveCandyId(String candyId) throws CandyNotFoundException {
@@ -48,6 +61,5 @@ public class Inventory {
         }
 
     }
-
 
 }

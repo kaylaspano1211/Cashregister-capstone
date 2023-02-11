@@ -88,20 +88,29 @@ public class ApplicationCLI {
 						}
 					}
 
-					if (subMenuChoice == SELECT_PRODUCTS){
+					if (subMenuChoice == SELECT_PRODUCTS) {
 
 						List<Candy> candyList = candyInventory.retrieveCandyList();
 						userInterface.printCandy(candyList);
 
 						String candyId = userInterface.askUserForCandyId();
+						String candyQty = userInterface.askUserForQty();
 
 						Candy foundCandy = null;
 
+						String userInputCheck = null;
 						try {
 							foundCandy = candyInventory.retrieveCandyId(candyId);
+							userInputCheck = userInterface.isSaleSuccessful(foundCandy, Integer.parseInt(candyQty), cashBox.getBalance());
+							userInterface.printMessage(userInputCheck);
+							double balance = cashBox.getBalance();
+							cashBox.updatedBalance(foundCandy,Integer.parseInt(candyQty));
+							candyInventory.updatedCandyInventory(foundCandy,Integer.parseInt(candyQty), balance);
+
 
 						} catch (CandyNotFoundException e) {
 							userInterface.printMessage("Candy " + e.getCandyId() + " does not exist. Please try again.");
+							continue;
 						}
 
 

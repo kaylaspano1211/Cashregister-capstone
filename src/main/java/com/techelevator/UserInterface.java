@@ -58,13 +58,29 @@ public class UserInterface {
 
         if (candy.getQty() == 0) {
            return "SOLD OUT";
-        } else {
+        }
+        else {
             return String.valueOf(candy.getQty());
         }
+    }
 
+    public String isSaleSuccessful(Candy candy, int qty, double balance){
+        if(qty > candy.getQty()){
+            return "Insufficient Stock";
+        }
+        else if(balance < candy.getPrice()*qty) {
+            return "Insufficient Funds";
+        } else {
+            return "Item added to Customers cart";
+        }
     }
 
 
+    private int moneySubtracted(CashBox cashBox){
+        String candyChoice = scanner.nextLine();
+        int value = Integer.parseInt(candyChoice);
+        return cashBox.subtractMoney(value);
+        }
 
 
 
@@ -96,7 +112,11 @@ public class UserInterface {
 
         System.out.println("Please enter a valid candy Id");
         return scanner.nextLine();
+    }
 
+    public String askUserForQty(){
+        System.out.println("Please enter in how many?");
+        return scanner.nextLine();
     }
 }
 
