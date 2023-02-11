@@ -150,6 +150,7 @@ public class UserInterface {
         double balance = cashBox.getBalance();
         int numberOfTwenties = 0;
         int numberOfTens = 0;
+        int numberOfFives = 0;
         int numberOfOnes = 0;
         int numberOfQuarters = 0;
         int numberOfDimes = 0;
@@ -162,6 +163,9 @@ public class UserInterface {
 
         numberOfTens = (int)balance / 10;
         balance = balance % 10;
+
+        numberOfFives = (int)balance / 5;
+        balance = balance % 5;
 
 
         numberOfOnes = (int)balance / 1;
@@ -180,7 +184,7 @@ public class UserInterface {
         balance = balance % .05;
 
         printMessage("\nChange: $" + String.format("%.2f", cashBox.getBalance()));
-        printMessage("(" + numberOfTwenties + ") Twenties, " + "(" + numberOfTens + ") Tens, " + "(" + numberOfOnes + ") Ones, " + "(" + numberOfQuarters + ") Quarters, " + "(" + numberOfDimes + ") Dimes, " + "(" + numberOfNickles + ") nickels\n\n");
+        printMessage("(" + numberOfTwenties + ") Twenties, " + "(" + numberOfTens + ") Tens, " + "(" + numberOfFives + ") " + "(" + numberOfOnes + ") Ones, " + "(" + numberOfQuarters + ") Quarters, " + "(" + numberOfDimes + ") Dimes, " + "(" + numberOfNickles + ") nickels\n\n");
 
     }
 
