@@ -33,6 +33,7 @@ public class ApplicationCLI {
 		CashBox cashBox = new CashBox();
 
 
+
 		// Good place to create references for UserInterface, Inventory class, and Register class.... (There should NEVER be more than one instance of these)
 
 
@@ -97,10 +98,11 @@ public class ApplicationCLI {
 						String candyQty = userInterface.askUserForQty();
 
 						Candy foundCandy = null;
-
 						String userInputCheck = null;
+
 						try {
 							foundCandy = candyInventory.retrieveCandyId(candyId);
+
 							userInputCheck = userInterface.isSaleSuccessful(foundCandy, Integer.parseInt(candyQty), cashBox.getBalance());
 							userInterface.printMessage(userInputCheck);
 							double balance = cashBox.getBalance();
@@ -108,10 +110,23 @@ public class ApplicationCLI {
 							candyInventory.updatedCandyInventory(foundCandy,Integer.parseInt(candyQty), balance);
 
 
+
 						} catch (CandyNotFoundException e) {
 							userInterface.printMessage("Candy " + e.getCandyId() + " does not exist. Please try again.");
 							continue;
 						}
+
+
+					}
+					if (subMenuChoice == COMPLETE_SALE){
+						ShoppingCart shoppingCart = new ShoppingCart();
+//						shoppingCart.addToCart();
+
+
+
+
+
+
 
 
 					}

@@ -6,6 +6,4 @@ public class Sour extends Candy{
         super(id, name, price, qty, iswrapped);
     }
 
-
-
 }

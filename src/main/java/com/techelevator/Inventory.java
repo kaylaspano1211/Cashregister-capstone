@@ -45,10 +45,6 @@ public class Inventory {
 
 
 
-
-
-
-
     public Candy retrieveCandyId(String candyId) throws CandyNotFoundException {
 
         if (candy.get(candyId) == null) {

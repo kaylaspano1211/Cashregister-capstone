@@ -5,11 +5,34 @@ import java.util.List;
 
 public class ShoppingCart {
 
-    List<Candy> shoppingCart = new ArrayList<>();
+    private List<Candy> candyToBuy = new ArrayList<>();
 
-    public void addCandyToCart(Candy candy) {
-        shoppingCart.add(candy);
+    public void addToCart(Candy candyToAdd) {
+        candyToBuy.add(candyToAdd);
     }
+
+    public double getTotalPrice(int qty){
+        double total = 0.0;
+        for (Candy candy : candyToBuy){
+            total += candy.getPrice()*qty;
+        }
+        return total;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
