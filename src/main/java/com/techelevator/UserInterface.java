@@ -31,7 +31,7 @@ public class UserInterface {
     }
 
     public void printCandy(List<Candy> foundCandy) {
-        System.out.println("*****INVENTORY*****");
+        System.out.println("\n*****INVENTORY*****\n");
 
         System.out.println(String.format("%1$-10s %2$-20s %3$-10s %4$-10s %5$-10s", "ID", "Name", "Wrapper", "QTY", "Price"));
 
@@ -66,12 +66,12 @@ public class UserInterface {
 
     public String isSaleSuccessful(Candy candy, int qty, double balance){
         if(qty > candy.getQty()){
-            return "Insufficient Stock";
+            return "Insufficient Stock\n";
         }
         else if(balance < candy.getPrice()*qty) {
-            return "Insufficient Funds";
+            return "Insufficient Funds\n";
         } else {
-            return "Item added to Customers cart";
+            return "Item added to Customers cart\n";
         }
     }
 
@@ -101,7 +101,7 @@ public class UserInterface {
         System.out.println("2. Select Products");
         System.out.println("3. Complete Sale");
 
-        System.out.println("Current Customer Balance: $" + cashBox.getBalance());
+        System.out.println("Current Customer Balance: $" + String.format("%.2f", cashBox.getBalance()));
 
         String subMenuChoice = scanner.nextLine();
 
@@ -110,63 +110,84 @@ public class UserInterface {
 
     public String askUserForCandyId (){
 
-        System.out.println("Please enter a valid candy Id");
+        System.out.println("Please enter a valid candy Id\n");
         return scanner.nextLine();
     }
 
     public String askUserForQty(){
-        System.out.println("Please enter in how many?");
+        System.out.println("Please enter in how many?\n");
         return scanner.nextLine();
     }
 
 
-//    private
-//    ShoppingCart shoppingCart = new ShoppingCart();
-//						shoppingCart.add();
-////        System.out.println(shoppingCart.receipt());
 
 
 
-
-
-//    private String productTypesDisplayed(Candy candy) {
-//        String productType;
-//        if (candy.getId().equals("C1") || candy.getId().equals("C2") || candy.getId().equals("C3") || candy.getId().equals("C4") || candy.getId().equals("C5")){
-//            productType = "Chocolate Confectionary";
-//        } else if (candy.getId().equals("S1") || candy.getId().equals("S2") || candy.getId().equals("S3") || candy.getId().equals("S4") || candy.getId().equals("S5")) {
-//            productType = "Sour Flavored Candies";
-//        } else if (candy.getId().equals("H1") || candy.getId().equals("H2") || candy.getId().equals("H3") || candy.getId().equals("H4") || candy.getId().equals("H5")) {
-//            productType = "Hard Tack Confectionary";
-//        } else if (candy.getId().equals("L1") || candy.getId().equals("L2") || candy.getId().equals("L3") || candy.getId().equals("L4") || candy.getId().equals("L5")) {
-//            productType = "Licorice and Jellies";
-//        }
-//        return productType;
-//    }
-
-
-
-//    public void printReceipt(List<ShoppingCart> foundCandy){
-//
-//        for (ShoppingCart itemsToAdd : foundCandy) {
-//            receiptCandy(itemsToAdd);
-//        }
-
-
-
-//    public String receipt(){
-//        String receipt = "\nReceipt\n";
-//        for(Book book : booksToBuy) {
-//            receipt += book.bookInfo();
-//            receipt += "\n";
-//        }
-//        receipt += "\nTotal: $" + getTotalPrice();
-//        return receipt;
-//    }
-//
-//    }
-    public void receiptCandy(Candy candy) {
-        System.out.println(String.format("%1$-10s %2$-20s %3$-10s %4$-10s $%5$1.2f", candy.getId(), candy.getName(), convert_boolean_to_string(candy), availabilityOfItems(candy), candy.getPrice()));
+    private String productTypesDisplayed(Candy candy) {
+        String productType = "";
+        if (candy.getId().equals("C1") || candy.getId().equals("C2") || candy.getId().equals("C3") || candy.getId().equals("C4") || candy.getId().equals("C5")){
+            productType = "Chocolate Confectionary";
+        } else if (candy.getId().equals("S1") || candy.getId().equals("S2") || candy.getId().equals("S3") || candy.getId().equals("S4") || candy.getId().equals("S5")) {
+            productType = "Sour Flavored Candies";
+        } else if (candy.getId().equals("H1") || candy.getId().equals("H2") || candy.getId().equals("H3") || candy.getId().equals("H4") || candy.getId().equals("H5")) {
+            productType = "Hard Tack Confectionary";
+        } else if (candy.getId().equals("L1") || candy.getId().equals("L2") || candy.getId().equals("L3") || candy.getId().equals("L4") || candy.getId().equals("L5")) {
+            productType = "Licorice and Jellies";
+        }
+        return productType;
     }
+
+
+
+    public void printReceipt(CashBox cashBox, List<Candy> candy) {
+        double totalPrice = 0.0;
+        for (Candy shoppingCartCandy : candy){
+            receiptCandy(shoppingCartCandy);
+            totalPrice = totalPrice + shoppingCartCandy.getQty()*shoppingCartCandy.getPrice();
+        }
+        printMessage("\nTotal: $" + String.format("%.2f", totalPrice));
+
+        double balance = cashBox.getBalance();
+        int numberOfTwenties = 0;
+        int numberOfTens = 0;
+        int numberOfOnes = 0;
+        int numberOfQuarters = 0;
+        int numberOfDimes = 0;
+        int numberOfNickles = 0;
+
+
+        numberOfTwenties = (int)balance / 20;
+        balance = balance % 20;
+
+
+        numberOfTens = (int)balance / 10;
+        balance = balance % 10;
+
+
+        numberOfOnes = (int)balance / 1;
+        balance = balance % 1.00;
+
+
+        numberOfQuarters = (int)(balance / .25);
+        balance = balance % .25;
+
+
+        numberOfDimes = (int)(balance / .10);
+        balance = balance % .10;
+
+
+        numberOfNickles = (int)(balance / .05);
+        balance = balance % .05;
+
+        printMessage("\nChange: $" + String.format("%.2f", cashBox.getBalance()));
+        printMessage("(" + numberOfTwenties + ") Twenties, " + "(" + numberOfTens + ") Tens, " + "(" + numberOfOnes + ") Ones, " + "(" + numberOfQuarters + ") Quarters, " + "(" + numberOfDimes + ") Dimes, " + "(" + numberOfNickles + ") nickels\n\n");
+
+    }
+
+    public void receiptCandy(Candy candy) {
+        System.out.println(String.format("%1$-5s %2$-20s %3$-30s $%4$1.2f $%5$1.2f", candy.getQty(), candy.getName(), productTypesDisplayed(candy), candy.getPrice(), candy.getPrice()* candy.getQty()));
+    }
+
 
 }
 

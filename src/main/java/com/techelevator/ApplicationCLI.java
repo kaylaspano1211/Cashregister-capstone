@@ -31,7 +31,7 @@ public class ApplicationCLI {
 		Inventory candyInventory = new Inventory();
 		UserInterface userInterface = new UserInterface();
 		CashBox cashBox = new CashBox();
-
+		ShoppingCart shoppingCart = new ShoppingCart();
 
 
 		// Good place to create references for UserInterface, Inventory class, and Register class.... (There should NEVER be more than one instance of these)
@@ -108,6 +108,8 @@ public class ApplicationCLI {
 							double balance = cashBox.getBalance();
 							cashBox.updatedBalance(foundCandy,Integer.parseInt(candyQty));
 							candyInventory.updatedCandyInventory(foundCandy,Integer.parseInt(candyQty), balance);
+							foundCandy.setQty(Integer.parseInt(candyQty));
+							shoppingCart.addToCart(foundCandy, Integer.parseInt(candyQty));
 
 
 
@@ -119,16 +121,13 @@ public class ApplicationCLI {
 
 					}
 					if (subMenuChoice == COMPLETE_SALE){
-						ShoppingCart shoppingCart = new ShoppingCart();
-//						shoppingCart.addToCart();
+
+						List<Candy> candyToBuy = shoppingCart.getCandyToBuy();
+
+						userInterface.printReceipt(cashBox, candyToBuy);
 
 
-
-
-
-
-
-
+						cashBox.setBalance(0.0);
 					}
 
 

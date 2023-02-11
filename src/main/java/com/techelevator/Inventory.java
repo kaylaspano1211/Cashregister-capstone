@@ -46,7 +46,7 @@ public class Inventory {
 
 
     public Candy retrieveCandyId(String candyId) throws CandyNotFoundException {
-
+        candyId = candyId.toUpperCase();
         if (candy.get(candyId) == null) {
             CandyNotFoundException candyE = new CandyNotFoundException();
             candyE.setCandyId(candyId);

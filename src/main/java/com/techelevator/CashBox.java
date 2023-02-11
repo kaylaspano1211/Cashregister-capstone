@@ -4,6 +4,10 @@ public class CashBox {
 
     private double balance;
 
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
     public int addMoney(int money) {
 
         if (balance + money <= 1000) {
@@ -33,8 +37,6 @@ public class CashBox {
             return (int)(balance);
         }
     }
-
-
 
 
     public double getBalance() {
