@@ -1,13 +1,15 @@
 package com.techelevator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ShoppingCart {
 
     private List<Candy> candyToBuy = new ArrayList<>();
 
-    public void addToCart(Candy candyToAdd) {
+    public void addToCart(Candy candyToAdd, int qty) {
         candyToBuy.add(candyToAdd);
     }
 
@@ -19,6 +21,14 @@ public class ShoppingCart {
         return total;
     }
 
+//    private Map<Candy,Integer> candyToBuy = new HashMap<>();
+//    //Add qty, to the method to store both values
+//    public void addToCandyTOCart(Candy candyToAdd, int qty) {
+//        //we would likely need a Map.Entry
+//        for (Map.Entry<Candy, Integer> candy : candyToBuy.entrySet()) {
+//            candyToBuy.getOrDefault(candyToAdd, qty);
+//        }
+//    }
 
 
 
