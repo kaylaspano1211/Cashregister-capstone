@@ -24,7 +24,7 @@ public class UserInterfaceTest {
     }
     @Test
     public void test_is_successful_funds() {
-        Candy candy = new Candy("C1", "Snuckers Bars", 1.35, 100, true);
+        Candy candy = new Candy("C1", "Snuckers Bars", 1.35, 100, true, "Chocolate Confectionery");
         CashBox cashBox = new CashBox();
 
         String result = userInterface.isSaleSuccessful(candy, candy.getQty(), cashBox.getBalance());

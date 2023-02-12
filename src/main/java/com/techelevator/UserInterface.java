@@ -119,17 +119,8 @@ public class UserInterface {
 
 
     private String productTypesDisplayed(Candy candy) {
-        String productType = "";
-        if (candy.getId().equals("C1") || candy.getId().equals("C2") || candy.getId().equals("C3") || candy.getId().equals("C4") || candy.getId().equals("C5")){
-            productType = "Chocolate Confectionary";
-        } else if (candy.getId().equals("S1") || candy.getId().equals("S2") || candy.getId().equals("S3") || candy.getId().equals("S4") || candy.getId().equals("S5")) {
-            productType = "Sour Flavored Candies";
-        } else if (candy.getId().equals("H1") || candy.getId().equals("H2") || candy.getId().equals("H3") || candy.getId().equals("H4") || candy.getId().equals("H5")) {
-            productType = "Hard Tack Confectionary";
-        } else if (candy.getId().equals("L1") || candy.getId().equals("L2") || candy.getId().equals("L3") || candy.getId().equals("L4") || candy.getId().equals("L5")) {
-            productType = "Licorice and Jellies";
-        }
-        return productType;
+
+        return candy.getDescription();
     }
 
 

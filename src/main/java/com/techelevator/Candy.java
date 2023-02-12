@@ -7,15 +7,20 @@ public class Candy {
     private boolean isWrapped;
     private int qty;
     private double price;
+    private String description;
 
-    public Candy(String id, String name, double price, int qty, boolean isWrapped){
+    public Candy(String id, String name, double price, int qty, boolean isWrapped, String description){
         this.id = id;
         this.name = name;
         this.isWrapped = isWrapped;
         this.qty = qty;
         this.price = price;
+        this.description = description;
     }
 
+    public String getDescription() {
+        return description;
+    }
 
     public String getId() {
         return id;
