@@ -21,11 +21,6 @@ public class CashBox {
     }
 
 
-    public int subtractMoney(int money) {
-        this.balance = this.balance - money;
-        return (int)balance;
-    }
-
     public int updatedBalance(Candy candy, int qty) {
         if (qty > candy.getQty()){
             return (int)balance;
@@ -40,7 +35,6 @@ public class CashBox {
 
 
     public double getBalance() {
-
         return balance;
     }
 

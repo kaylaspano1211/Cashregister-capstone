@@ -17,6 +17,7 @@ public class ApplicationCLI {
 	final int COMPLETE_SALE = 3;
 
 
+
 	// probably should leave this method alone... and go do stuff in the run method....
 	public static void main(String[] args) {
 		ApplicationCLI cli = new ApplicationCLI();
@@ -55,6 +56,7 @@ public class ApplicationCLI {
 
 			if (choice == SHOW_INVENTORY){
 
+
 				List<Candy> candyList = candyInventory.retrieveCandyList();
 
 
@@ -63,19 +65,18 @@ public class ApplicationCLI {
 
 			}
 
-			if (choice == MAKE_SALE){
+			if (choice == MAKE_SALE) {
 
-				while(true){
+				while (true) {
 					int subMenuChoice;
 
 					try {
 						subMenuChoice = userInterface.PrintSubMenu(cashBox); // method that prints subMenu
-					}
-					catch (Exception e) {
+					} catch (Exception e) {
 						userInterface.printMessage("Invalid Choice!");
 						continue;
 					}
-					if(subMenuChoice == TAKE_MONEY){
+					if (subMenuChoice == TAKE_MONEY) {
 
 						// ask user for amount of Money
 						userInterface.printMessage("Please Enter Amount: ");
@@ -106,11 +107,9 @@ public class ApplicationCLI {
 							userInputCheck = userInterface.isSaleSuccessful(foundCandy, Integer.parseInt(candyQty), cashBox.getBalance());
 							userInterface.printMessage(userInputCheck);
 							double balance = cashBox.getBalance();
-							cashBox.updatedBalance(foundCandy,Integer.parseInt(candyQty));
-							candyInventory.updatedCandyInventory(foundCandy,Integer.parseInt(candyQty), balance);
-							foundCandy.setQty(Integer.parseInt(candyQty));
+							cashBox.updatedBalance(foundCandy, Integer.parseInt(candyQty));
+							candyInventory.updatedCandyInventory(foundCandy, Integer.parseInt(candyQty), balance);
 							shoppingCart.addToCart(foundCandy, Integer.parseInt(candyQty));
-
 
 
 						} catch (CandyNotFoundException e) {
@@ -120,22 +119,24 @@ public class ApplicationCLI {
 
 
 					}
-					if (subMenuChoice == COMPLETE_SALE){
+					if (subMenuChoice == COMPLETE_SALE) {
 
 						List<Candy> candyToBuy = shoppingCart.getCandyToBuy();
 
 						userInterface.printReceipt(cashBox, candyToBuy);
 
-
 						cashBox.setBalance(0.0);
+						break;
 					}
 
 
 				}
+
 			}
+			if (choice == QUIT) {
+				return;
 
-
-
+			}
 
 
 		}

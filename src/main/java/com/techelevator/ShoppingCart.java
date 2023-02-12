@@ -11,33 +11,16 @@ public class ShoppingCart {
 
 
     public void addToCart(Candy candyToAdd, int qty) {
-        candySelected.add(candyToAdd);
-    }
-
-    public double getTotalPrice(int qty){
-        double total = 0.0;
-        for (Candy candy : candySelected){
-            total += candy.getPrice()*qty;
-        }
-        return total;
+        // Making a new object that is a copy of the old one, to pass in from the App. Otherwise the original qty, would be changed everywhere.
+        Candy copy = new Candy(candyToAdd.getId(), candyToAdd.getName(), candyToAdd.getPrice(), candyToAdd.getQty(), candyToAdd.isWrapped());
+        copy.setQty(qty);
+        candySelected.add(copy);
     }
 
     public List<Candy> getCandyToBuy() {
         return candySelected;
     }
 
-
-
-
-
-    //    private Map<Candy,Integer> candyToBuy = new HashMap<>();
-//    //Add qty, to the method to store both values
-//    public void addToCandyTOCart(Candy candyToAdd, int qty) {
-//        //we would likely need a Map.Entry
-//        for (Map.Entry<Candy, Integer> candy : candyToBuy.entrySet()) {
-
-//        }
-//    }
 
 
 

@@ -1,6 +1,6 @@
 package com.techelevator;
 
-public abstract class Candy {
+public class Candy {
 
     private String id;
     private String name;
@@ -15,6 +15,7 @@ public abstract class Candy {
         this.qty = qty;
         this.price = price;
     }
+
 
     public String getId() {
         return id;
@@ -41,7 +42,7 @@ public abstract class Candy {
     }
 
     public int getQty() {
-        return qty;
+        return this.qty;
     }
 
     public void setQty(int qty) {
@@ -56,9 +57,9 @@ public abstract class Candy {
         this.price = price;
     }
 
-
-
-
+    public int UpdateQuantity(int qty){
+        return this.qty = this.qty - qty;
+    }
 
 
 

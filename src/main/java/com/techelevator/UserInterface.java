@@ -76,21 +76,14 @@ public class UserInterface {
     }
 
 
-    private int moneySubtracted(CashBox cashBox){
-        String candyChoice = scanner.nextLine();
-        int value = Integer.parseInt(candyChoice);
-        return cashBox.subtractMoney(value);
-        }
 
-
-
-    public int MoneyAdded(CashBox cashBox) {
+    public void MoneyAdded(CashBox cashBox) {
 
         String moneyAddedChoice = scanner.nextLine();
         int value = Integer.parseInt(moneyAddedChoice);
 
 
-        return cashBox.addMoney(value);
+        cashBox.addMoney(value);
 
 
     }
@@ -118,9 +111,6 @@ public class UserInterface {
         System.out.println("Please enter in how many?\n");
         return scanner.nextLine();
     }
-
-
-
 
 
     private String productTypesDisplayed(Candy candy) {
@@ -189,7 +179,7 @@ public class UserInterface {
     }
 
     public void receiptCandy(Candy candy) {
-        System.out.println(String.format("%1$-5s %2$-20s %3$-30s $%4$1.2f $%5$1.2f", candy.getQty(), candy.getName(), productTypesDisplayed(candy), candy.getPrice(), candy.getPrice()* candy.getQty()));
+        System.out.println(String.format("%1$-5s %2$-20s %3$-30s $%4$1.2f $%5$1.2f", candy.getQty(), candy.getName(), productTypesDisplayed(candy), candy.getPrice(), candy.getPrice()*candy.getQty()));
     }
 
 

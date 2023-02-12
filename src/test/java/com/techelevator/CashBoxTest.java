@@ -35,7 +35,7 @@ public class CashBoxTest {
     }
 
     @Test
-    public void test_subtract_money_from_updated_balance_sour(){
+    public void test_updated_balance_money_from_updated_balance_sour(){
 
         sour = new Sour("S1", "Gummy Ants", .10, 2, false);
         Assert.assertEquals(cashBox.getBalance(), cashBox.updatedBalance(sour, sour.getQty()), 0.00);
@@ -48,7 +48,7 @@ public class CashBoxTest {
     }
 
     @Test
-    public void test_subtract_money_from_updated_balance_chocolate() {
+    public void test_updated_balance_money_from_updated_balance_chocolate() {
 
         chocolate = new Chocolate("C1", "Snuckers Bar", 1.35, 20, true);
         Assert.assertEquals(cashBox.getBalance(), cashBox.updatedBalance(chocolate, chocolate.getQty()), 0.00);
@@ -59,7 +59,7 @@ public class CashBoxTest {
     }
 
     @Test
-    public void test_subtract_money_from_updated_balance_hard_candy() {
+    public void test_updated_balance_money_from_updated_balance_hard_candy() {
 
         hardCandy = new HardCandy("H1", "Jolly Cowboy", 2.35, 100, true);
         Assert.assertEquals(cashBox.getBalance(), cashBox.updatedBalance(hardCandy, hardCandy.getQty()), 0.00);
@@ -70,7 +70,7 @@ public class CashBoxTest {
     }
 
     @Test
-    public void test_subtract_money_from_updated_balance_licorice() {
+    public void test_updated_balance_money_from_updated_balance_licorice() {
 
         licorice = new Licorice("L1", "Dracula Piller", 1.15, 50, false);
         Assert.assertEquals(cashBox.getBalance(), cashBox.updatedBalance(licorice, licorice.getQty()), 0.00);
