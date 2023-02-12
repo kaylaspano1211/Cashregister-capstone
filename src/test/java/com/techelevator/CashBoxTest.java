@@ -7,10 +7,8 @@ import org.junit.Test;
 public class CashBoxTest {
 
     private CashBox cashBox;
-    private Sour sour;
-    private HardCandy hardCandy;
-    private Chocolate chocolate;
-    private Licorice licorice;
+    private Candy candy;
+
 
 
 
@@ -37,11 +35,11 @@ public class CashBoxTest {
     @Test
     public void test_updated_balance_money_from_updated_balance_sour(){
 
-        sour = new Sour("S1", "Gummy Ants", .10, 2, false);
-        Assert.assertEquals(cashBox.getBalance(), cashBox.updatedBalance(sour, sour.getQty()), 0.00);
-        Assert.assertEquals(0.0, cashBox.updatedBalance(sour, 101), 0.00);
-        Assert.assertNotEquals(10.0, cashBox.updatedBalance(sour, 2), 0.0);
-        Assert.assertEquals(0.20, cashBox.updatedBalance(sour, 2), 0.20);
+        candy = new Candy("S1", "Gummy Ants", .10, 2, false);
+        Assert.assertEquals(cashBox.getBalance(), cashBox.updatedBalance(candy, candy.getQty()), 0.00);
+        Assert.assertEquals(0.0, cashBox.updatedBalance(candy, 101), 0.00);
+        Assert.assertNotEquals(10.0, cashBox.updatedBalance(candy, 2), 0.0);
+        Assert.assertEquals(0.20, cashBox.updatedBalance(candy, 2), 0.20);
 
 
 
@@ -50,32 +48,32 @@ public class CashBoxTest {
     @Test
     public void test_updated_balance_money_from_updated_balance_chocolate() {
 
-        chocolate = new Chocolate("C1", "Snuckers Bar", 1.35, 20, true);
-        Assert.assertEquals(cashBox.getBalance(), cashBox.updatedBalance(chocolate, chocolate.getQty()), 0.00);
-        Assert.assertEquals(0.0, cashBox.updatedBalance(chocolate, 101), 0.00);
-        Assert.assertNotEquals(10.0, cashBox.updatedBalance(chocolate, 2), 0.0);
-        Assert.assertEquals(cashBox.getBalance(), cashBox.updatedBalance(chocolate, 2), 0.00);
+        candy = new Candy("C1", "Snuckers Bar", 1.35, 20, true);
+        Assert.assertEquals(cashBox.getBalance(), cashBox.updatedBalance(candy, candy.getQty()), 0.00);
+        Assert.assertEquals(0.0, cashBox.updatedBalance(candy, 101), 0.00);
+        Assert.assertNotEquals(10.0, cashBox.updatedBalance(candy, 2), 0.0);
+        Assert.assertEquals(cashBox.getBalance(), cashBox.updatedBalance(candy, 2), 0.00);
 
     }
 
     @Test
     public void test_updated_balance_money_from_updated_balance_hard_candy() {
 
-        hardCandy = new HardCandy("H1", "Jolly Cowboy", 2.35, 100, true);
-        Assert.assertEquals(cashBox.getBalance(), cashBox.updatedBalance(hardCandy, hardCandy.getQty()), 0.00);
-        Assert.assertEquals(cashBox.getBalance(), cashBox.updatedBalance(hardCandy, 2), 0.00);
-        Assert.assertEquals(0.0, cashBox.updatedBalance(hardCandy, 101), 0.00);
-        Assert.assertNotEquals(10.0, cashBox.updatedBalance(hardCandy, 2), 0.0);
+        candy = new Candy("H1", "Jolly Cowboy", 2.35, 100, true);
+        Assert.assertEquals(cashBox.getBalance(), cashBox.updatedBalance(candy, candy.getQty()), 0.00);
+        Assert.assertEquals(cashBox.getBalance(), cashBox.updatedBalance(candy, 2), 0.00);
+        Assert.assertEquals(0.0, cashBox.updatedBalance(candy, 101), 0.00);
+        Assert.assertNotEquals(10.0, cashBox.updatedBalance(candy, 2), 0.0);
 
     }
 
     @Test
     public void test_updated_balance_money_from_updated_balance_licorice() {
 
-        licorice = new Licorice("L1", "Dracula Piller", 1.15, 50, false);
-        Assert.assertEquals(cashBox.getBalance(), cashBox.updatedBalance(licorice, licorice.getQty()), 0.00);
-        Assert.assertEquals(0.0, cashBox.updatedBalance(licorice, 101), 0.00);
-        Assert.assertNotEquals(10.0, cashBox.updatedBalance(licorice, 2), 0.0);
-        Assert.assertEquals(cashBox.getBalance(), cashBox.updatedBalance(licorice, 2), 0.00);
+        candy = new Candy("L1", "Dracula Piller", 1.15, 50, false);
+        Assert.assertEquals(cashBox.getBalance(), cashBox.updatedBalance(candy, candy.getQty()), 0.00);
+        Assert.assertEquals(0.0, cashBox.updatedBalance(candy, 101), 0.00);
+        Assert.assertNotEquals(10.0, cashBox.updatedBalance(candy, 2), 0.0);
+        Assert.assertEquals(cashBox.getBalance(), cashBox.updatedBalance(candy, 2), 0.00);
     }
 }

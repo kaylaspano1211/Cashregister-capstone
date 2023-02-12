@@ -1,7 +1,10 @@
 package com.techelevator;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.SimpleFormatter;
 
 /**
  * This class is responsible for ALL user input and output.
@@ -10,6 +13,9 @@ public class UserInterface {
 
     //Probably a great place for a scanner and some methods to prompt user for info and return response back to ApplicationCLI
     private Scanner scanner = new Scanner(System.in);
+    private LogFileWriter writer = new LogFileWriter();
+    SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss aa ");
+    Date date = new Date();
 
     public int PrintMenu() {
 
@@ -65,6 +71,7 @@ public class UserInterface {
     }
 
     public String isSaleSuccessful(Candy candy, int qty, double balance){
+        writer.logTransactions(dateFormat.format(date) + qty + " " + candy.getName() + " " + candy.getId() + " $" + String.format("%1.2f",candy.getPrice()*qty) + " $" + String.format("%1.2f",balance - candy.getPrice()*qty));
         if(qty > candy.getQty()){
             return "Insufficient Stock\n";
         }
@@ -78,15 +85,13 @@ public class UserInterface {
 
 
     public void MoneyAdded(CashBox cashBox) {
-
         String moneyAddedChoice = scanner.nextLine();
         int value = Integer.parseInt(moneyAddedChoice);
 
-
         cashBox.addMoney(value);
-
-
+        writer.logTransactions(dateFormat.format(date) + "MONEY RECEIVED: " + "$" + String.format("%1.2f",(double)(value)) + " $" + String.format("%1.2f", cashBox.getBalance()));
     }
+
 
     public int PrintSubMenu(CashBox cashBox) {
 
@@ -174,13 +179,23 @@ public class UserInterface {
         balance = balance % .05;
 
         printMessage("\nChange: $" + String.format("%.2f", cashBox.getBalance()));
-        printMessage("(" + numberOfTwenties + ") Twenties, " + "(" + numberOfTens + ") Tens, " + "(" + numberOfFives + ") " + "(" + numberOfOnes + ") Ones, " + "(" + numberOfQuarters + ") Quarters, " + "(" + numberOfDimes + ") Dimes, " + "(" + numberOfNickles + ") nickels\n\n");
+        printMessage("(" + numberOfTwenties + ") Twenties, " + "(" + numberOfTens + ") Tens, " + "(" + numberOfFives + ") Fives, " + "(" + numberOfOnes + ") Ones, " + "(" + numberOfQuarters + ") Quarters, " + "(" + numberOfDimes + ") Dimes, " + "(" + numberOfNickles + ") nickels\n\n");
 
+
+        writer.logTransactions(dateFormat.format(date) + "CHANGE GIVEN: " + "$" + String.format("%1.2f",cashBox.getBalance()) + " $" + String.format("%1.2f",setBalance()));
     }
 
     public void receiptCandy(Candy candy) {
         System.out.println(String.format("%1$-5s %2$-20s %3$-30s $%4$1.2f $%5$1.2f", candy.getQty(), candy.getName(), productTypesDisplayed(candy), candy.getPrice(), candy.getPrice()*candy.getQty()));
+
     }
+
+    private double setBalance(){
+        return 0.00;
+    }
+
+
+
 
 
 }

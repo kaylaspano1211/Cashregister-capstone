@@ -16,10 +16,13 @@ public class InventoryTest {
     @Test
     public void test_retrieve_candy_ID(){
 
-        Assert.assertEquals("C1","C1");
-        Assert.assertEquals("C5", "C5");
-        Assert.assertNotEquals("L3", "L4");
-        Assert.assertNotEquals("L2", "L1");
+        String result = "C1";
+        String result2 = "C5";
+        String result3 = "L3";
+        Assert.assertEquals("C1",result);
+        Assert.assertEquals("C5", result2);
+        Assert.assertEquals("L3", result3);
+        Assert.assertNotEquals("L1", result3);
 
     }
 
