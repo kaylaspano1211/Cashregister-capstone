@@ -50,7 +50,8 @@ public class ApplicationCLI {
 				choice = userInterface.PrintMenu();
 			}
 			catch (Exception e) {
-				userInterface.printMessage("Invalid Choice!");
+				//printing message to alert the user they made an invalid choice
+				userInterface.printMessage("**** Invalid Choice! ****");
 				continue;
 			}
 
@@ -73,7 +74,7 @@ public class ApplicationCLI {
 					try {
 						subMenuChoice = userInterface.PrintSubMenu(cashBox); // method that prints subMenu
 					} catch (Exception e) {
-						userInterface.printMessage("Invalid Choice!");
+						userInterface.printMessage("**** Invalid Choice! ****");
 						continue;
 					}
 					if (subMenuChoice == TAKE_MONEY) {
@@ -82,38 +83,46 @@ public class ApplicationCLI {
 						userInterface.printMessage("Please Enter Amount: ");
 
 						try {
-
+							// taking that moneyAdded and adding it to our CashBox, catching any num formatting exceptions.
 							userInterface.MoneyAdded(cashBox);
 						} catch (NumberFormatException e) {
-							userInterface.printMessage("****Invalid amount entered, please select another choice and try again****");
+							userInterface.printMessage("**** Invalid amount entered, please select another choice and try again ****");
 							continue;
 						}
 					}
 
 					if (subMenuChoice == SELECT_PRODUCTS) {
-
+						//fetching our candy list
 						List<Candy> candyList = candyInventory.retrieveCandyList();
 						userInterface.printCandy(candyList);
 
+						//calling the UI class to ask for candyId
 						String candyId = userInterface.askUserForCandyId();
+						//calling the UI class to ask user for qty
 						String candyQty = userInterface.askUserForQty();
 
 						Candy foundCandy = null;
 						String userInputCheck = null;
 
 						try {
+							//taking the Id the user input and going to the candyInventory to retrieve the specific id
 							foundCandy = candyInventory.retrieveCandyId(candyId);
-
+							//We are calling the UI to ask if the sale proves successful, then assign that to the UserInputCheck variable we created
 							userInputCheck = userInterface.isSaleSuccessful(foundCandy, Integer.parseInt(candyQty), cashBox.getBalance());
+							//calling the UI to access the PrintMessage method, which takes in our values for UserInputCheck
 							userInterface.printMessage(userInputCheck);
+							//getting the current balance from Cashbox and assigning it to a local variable, balance.
 							double balance = cashBox.getBalance();
+							//updating balance in Cashbox by passing through the updateBalance method - Which subtracts price*qty from current balance. .
 							cashBox.updatedBalance(foundCandy, Integer.parseInt(candyQty));
+							//updating the inventory list
 							candyInventory.updatedCandyInventory(foundCandy, Integer.parseInt(candyQty), balance);
+							//adding candy and qty to the shopping cart by calling the shopping cart class, add to cart method.
 							shoppingCart.addToCart(foundCandy, Integer.parseInt(candyQty));
 
 
 						} catch (CandyNotFoundException e) {
-							userInterface.printMessage("Candy " + e.getCandyId() + " does not exist. Please try again.");
+							userInterface.printMessage("**** Candy " + e.getCandyId() + " does not exist. Please try again. ****");
 							continue;
 						}
 
@@ -121,9 +130,11 @@ public class ApplicationCLI {
 					}
 					if (subMenuChoice == COMPLETE_SALE) {
 
-						List<Candy> candyToBuy = shoppingCart.getCandyToBuy();
+						//fetching our list in the shopping cart class.
+						List<Candy> boughtCandy = shoppingCart.getCandyToBuy();
 
-						userInterface.printReceipt(cashBox, candyToBuy);
+
+						userInterface.printReceipt(cashBox, boughtCandy);
 
 						cashBox.setBalance(0.0);
 						break;

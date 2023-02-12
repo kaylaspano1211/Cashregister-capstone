@@ -11,14 +11,17 @@ public class UserInterfaceTest {
     @Before
     public void setUp(){
         userInterface = new UserInterface();
+
     }
 
     @Test
     public void test_is_successful_stock() {
+        Candy candy = new Candy("C1", "Snuckers Bars", 1.35, 20, true, "Chocolate Confectionery");
 
+//        String result = userInterface.isSaleSuccessful(candy, 100, candy.getPrice()* candy.getQty());
+//        Assert.assertNotEquals( result, userInterface.isSaleSuccessful(candy, candy.getQty(), candy.getPrice()*candy.getPrice()));
+//        Assert.assertNotEquals("Insufficient Funds", result, userInterface.isSaleSuccessful(candy,50, candy.getPrice()* candy.getQty()));
 
-
-        Assert.assertNotEquals("Insufficient Stock", 50, 20);
 
 
     }
@@ -29,7 +32,7 @@ public class UserInterfaceTest {
 
         String result = userInterface.isSaleSuccessful(candy, candy.getQty(), cashBox.getBalance());
         Assert.assertEquals("Insufficient Funds", result, result);
-        Assert.assertEquals("Item Added to Customers Cart", 50, 50);
+
 
     }
 
